@@ -6,10 +6,18 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 设置 cuda torch torchvision tensorrt
-set(USE_CUDA OFF)
-set(USE_Torch OFF)
-set(USE_TorchVision OFF)
-set(USE_TensorRT OFF)
+
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    set(USE_CUDA ON)
+    set(USE_Torch ON)
+    set(USE_TorchVision ON)
+    set(USE_TensorRT ON)
+else()
+    set(USE_CUDA OFF)
+    set(USE_Torch OFF)
+    set(USE_TorchVision OFF)
+    set(USE_TensorRT OFF)
+endif()
 
 
 # 添加依赖包
@@ -78,6 +86,7 @@ endif()
 if(USE_TensorRT)
     list(APPEND REQUIRED_LIBS ${TENSORRT_LIBRARY} ${TENSORRT_PARSER_LIBRARY})
 endif()
+message(STATUS "REQUIRED_LIBS: ${REQUIRED_LIBS}")
 
 # 创建目标
 add_executable(${PROJECT_NAME} src/myapp.cpp src/main.cpp)
