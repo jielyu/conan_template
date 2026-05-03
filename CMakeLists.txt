@@ -26,6 +26,8 @@ find_package(gflags REQUIRED)
 find_package(fmt REQUIRED)
 find_package(yaml-cpp REQUIRED)
 find_package(nlohmann_json REQUIRED)
+find_package(OpenSSL REQUIRED)
+find_package(jwt-cpp REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(xtensor REQUIRED)
 find_package(onnxruntime REQUIRED)
@@ -68,6 +70,8 @@ endif()
 set(REQUIRED_LIBS glog::glog 
         gflags::gflags 
         nlohmann_json::nlohmann_json 
+        openssl::openssl
+        jwt-cpp::jwt-cpp
         yaml-cpp::yaml-cpp 
         fmt::fmt 
         xtensor

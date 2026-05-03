@@ -26,6 +26,8 @@ class myappRecipe(ConanFile):
         self.requires("onnxruntime/1.24.4")
         self.requires("protobuf/6.33.5", override=True)
         self.requires("eigen/5.0.1", override=True)
+        self.requires("openssl/3.5.2")
+        self.requires("jwt-cpp/0.7.1")
 
     def layout(self):
         cmake_layout(self)
